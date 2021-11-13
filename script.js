@@ -58,6 +58,7 @@ var main = function (input) {
     Computer hand: ${computerCard1.name} of ${computerCard1.suit} and ${computerCard2.name} of ${computerCard2.suit}`;
     } else {
       var computerCardHit = drawCard(computerCardHit);
+      console.log(`computer draws a third card: ${drawCard(computerCardHit)}`);
       computerTotalHand =
         computerCard1.rank + computerCard2.rank + computerCardHit.rank;
       message += `<br><br>
@@ -88,7 +89,7 @@ var main = function (input) {
     ${computerCard2.name} of ${computerCard2.suit}`;
     } else if (computerTotalHand < 17) {
       var computerCardHit = drawCard(computerCardHit);
-
+      console.log(`computer draws a third card: ${computerCardHit}`);
       // check for double aces
       checkDoubleAces();
 
@@ -114,7 +115,7 @@ var main = function (input) {
       message +=
         `<br><br>Your score: ${playerTotalHand}<br>
       Computer score: ${computerTotalHand}
-      <br><br> This is a Blackjack win. Player wins by black jack!` +
+      <br><br> This is a Blackjack win. Player wins by black jack! <br>` +
         winningImage +
         `<br><br> Press the submit button again to start a new round.`;
       return message;
@@ -158,13 +159,11 @@ var main = function (input) {
       } else if (playerTotalHand < computerTotalHand) {
         message += `<br><br>Your score: ${playerTotalHand}<br>
       Computer score: ${computerTotalHand}
-      <br><br> Player wins by having a score closer to 21.`;
-      }
-      // losing scenario
-      else if (playerTotalHand > computerTotalHand) {
+      <br><br> Computer wins by having a higher total hand.`;
+      } else if (playerTotalHand > computerTotalHand) {
         message += `<br><br>Your score: ${playerTotalHand}<br>
       Computer score: ${computerTotalHand}
-      <br><br> Player loses by having a score higher than 21.`;
+      <br><br> Player wins by hanving a higher total hand.`;
       }
     }
     gameMode = `draw card`;
